@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm") version "2.0.21"
     `maven-publish`
     signing
+    id("org.jetbrains.kotlinx.kover") version "0.8.3"
 }
 
 defaultTasks("clean", "build")
@@ -101,5 +102,11 @@ subprojects {
         signing {
             sign(publishing.publications["mavenJava"])
         }
+    }
+}
+
+kover {
+    merge {
+        subprojects { true }
     }
 }
